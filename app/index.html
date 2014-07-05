@@ -25,7 +25,13 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
+    <nav></nav>
     <div class="container" ng-view=""></div>
+
+    <div class="footer">
+      <p><span class="glyphicon glyphicon-heart"></span>
+      from the Egyptian team</p>
+    </div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -52,6 +58,7 @@
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/parse-js-sdk/lib/parse.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -61,6 +68,7 @@
         <script src="scripts/controllers/teams.js"></script>
         <script src="scripts/directives/nav.js"></script>
         <script src="scripts/directives/teamsgraph.js"></script>
+        <script src="scripts/controllers/register.js"></script>
         <!-- endbuild -->
 </body>
 </html>

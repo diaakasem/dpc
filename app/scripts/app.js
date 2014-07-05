@@ -1,13 +1,20 @@
 'use strict';
 
-angular
+(function() {
+
+var dpcModule = angular
   .module('dpcApp', [
     'ngCookies',
     'ngResource',
     'ngSanitize',
     'ngRoute'
-  ])
-  .config(function ($routeProvider) {
+  ]);
+
+dpcModule.config(function ($routeProvider) {
+
+    Parse.initialize("WSGMmizuVjklAI6SpdIMBypeDCzKPUAo05QpWUnV",
+                    "OVNmBrjWj4ggScDNvKf159pVQM89vyNTlRIOIh4u")
+
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -17,7 +24,13 @@ angular
         templateUrl: 'views/teams.html',
         controller: 'TeamsCtrl'
       })
+      .when('/register', {
+        templateUrl: 'views/register.html',
+        controller: 'RegisterCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
   });
+
+}).call(null);
