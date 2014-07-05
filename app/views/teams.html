@@ -1,1 +1,41 @@
-<p>This is the teams view.</p>
+<tabset>
+<tab heading="Add">
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
+    <form role="form" name="teamAddForm" id="teamAddForm" ng-submit="add(model)">
+      <div class="form-group">
+        <input type="text" name="name" id="name"
+        class="form-control input-lg" placeholder="Name" tabindex="1"
+        ng-model="model.name">
+      </div>
+      <div class="form-group">
+        <textarea name="description" id="description" class="form-control input-lg"
+          placeholder="Short Description about the team and its resonibility" tabindex="2"
+          ng-model="model.description"></textarea>
+      </div>
+      <hr class="colorgraph">
+      <div class="row">
+        <div class="col-xs-12 col-md-6 col-md-offset-6"><input type="submit"
+          value="Add" class="btn btn-primary btn-block btn-lg" tabindex="3"></div>
+      </div>
+    </form>
+  </div>
+</div>
+</tab>
+<tab heading="List">
+<div class="row">
+  <div class="col-xs-12 col-sm-12">
+    <table ng-table="tableParams" class="table">
+      <tr ng-repeat="group in $data">
+        <td data-title="'Name'">{{group.get("name")}}</td>
+        <td data-title="'Participants'">{{group.get("participants").length}}</td>
+        <td data-title="'Actions'">
+          <button class="btn btn-danger" ng-click="remove(group)">
+            <i class="glyphicons glyphicons-remove"></i>Remove </button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</tab>
+</tabset>
