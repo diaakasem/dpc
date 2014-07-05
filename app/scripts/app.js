@@ -28,6 +28,14 @@ dpcModule.config(function ($routeProvider) {
         templateUrl: 'views/register.html',
         controller: 'RegisterCtrl'
       })
+      .when('/teams', {
+        templateUrl: 'views/teams.html',
+        controller: 'TeamsCtrl'
+      })
+      .when('/projects', {
+        templateUrl: 'views/projects.html',
+        controller: 'ProjectsCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
