@@ -7,6 +7,8 @@ var dpcModule = angular
     'ngCookies',
     'ngResource',
     'ngSanitize',
+    'ngTable',
+    'ui.bootstrap',
     'ngRoute'
   ]);
 
