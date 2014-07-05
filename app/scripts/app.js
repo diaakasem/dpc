@@ -12,8 +12,8 @@ var dpcModule = angular
 
 dpcModule.config(function ($routeProvider) {
 
-    Parse.initialize("WSGMmizuVjklAI6SpdIMBypeDCzKPUAo05QpWUnV",
-                    "OVNmBrjWj4ggScDNvKf159pVQM89vyNTlRIOIh4u")
+    Parse.initialize("KQ6jSLHo3JOIiyIxjRSOe0IAQMO2MAxBAQTAhGys",
+                    "SfrrVMjP8sxmPHjAM6Lpdp6FuS30EzMqm6FvsfjP")
 
     $routeProvider
       .when('/', {

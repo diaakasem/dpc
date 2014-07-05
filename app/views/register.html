@@ -1,1 +1,45 @@
-<p>This is the register view.</p>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
+    <form role="form" name="registerform" id="registerform" ng-submit="register(model)">
+      <h2>Please Add Your Details</h2>
+      <h2><small>It's free and always will be.</small></h2>
+      <hr class="colorgraph">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6">
+          <div class="form-group">
+            <input type="text" name="first_name" id="first_name"
+            class="form-control input-lg" placeholder="First Name" tabindex="1"
+            ng-model="model.first_name">
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6">
+          <div class="form-group">
+            <input type="text" name="last_name" id="last_name"
+            class="form-control input-lg" placeholder="Last Name" tabindex="2"
+            ng-model="model.last_name">
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="text" name="display_name" id="display_name"
+        class="form-control input-lg" placeholder="Display Name" tabindex="3"
+        ng-model="model.display_name">
+      </div>
+      <div class="form-group">
+        <input type="email" name="email" id="email" class="form-control
+        input-lg" placeholder="Email Address" tabindex="4"
+        ng-model="model.email">
+      </div>
+      <div class="form-group">
+        <textarea name="description" id="description" class="form-control input-lg"
+          placeholder="Short Description about yourself" tabindex="5"
+          ng-model="model.description"></textarea>
+      </div>
+      <hr class="colorgraph">
+      <div class="row">
+        <div class="col-xs-12 col-md-6 col-md-offset-6"><input type="submit"
+          value="Cool, I'm Done." class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
+      </div>
+    </form>
+  </div>
+</div>
