@@ -1,9 +1,9 @@
 <div class="header">
   <ul class="nav nav-pills pull-right">
-    <li class="active"><a ng-href="#">Home</a></li>
-    <li><a ng-href="#/teams"><i class="glyphicons glyphicons-heart"></i>Teams</a></li>
-    <li><a ng-href="#/projects"><i class="glyphicons glyphicons-camera"></i>Projects</a></li>
-    <li><a ng-href="#/profile"><i class="glyphicons glyphicons-user"></i>Profile</a></li>
+    <li ng-class="{active: path === '/'}"><a ng-href="#">Home</a></li>
+    <li ng-class="{active: path === '/teams'}"><a ng-href="#/teams"><i class="glyphicons glyphicons-heart"></i>Teams</a></li>
+    <li ng-class="{active: path === '/projects'}"><a ng-href="#/projects"><i class="glyphicons glyphicons-camera"></i>Projects</a></li>
+    <li ng-class="{active: path === '/profile'}"><a ng-href="#/profile"><i class="glyphicons glyphicons-user"></i>Profile</a></li>
   </ul>
   <h3 class="text-muted" style="padding-left: 20px;">DPC Easy</h3>
 </div>
