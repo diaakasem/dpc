@@ -25,10 +25,10 @@
             var profile = new Profile();
             profile.save(scope.model, {
                 success: function(person) {
-                             scope.list();
-                         },
+                    scope.list();
+                },
                 error: function(person, error) {
-                       }
+                }
             });
         };
 
