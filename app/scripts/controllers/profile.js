@@ -11,16 +11,16 @@
             var query = new Parse.Query(Profile);
             //query.equalTo("title", "I'm Hungry");
             query.find({
-              success:function(list) {
-                          scope.participants = list;
-                          scope.tableParams.reload();
-                      }
+                success:function(list) {
+                            scope.participants = list;
+                            scope.tableParams.reload();
+                        }
             });
         };
 
         // Preloading
         scope.load();
-        
+
         scope.update = function(model) {
             var profile = new Profile();
             profile.save(scope.model, {
