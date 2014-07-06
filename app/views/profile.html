@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="span3 well">
+        <center>
+          <a href="#aboutModal" data-toggle="modal" data-target="#myModal">
+            <img src="" name="aboutme" width="140" height="140" class="img-circle">
+          </a>
+        <h3>{{model.get('first_name')}} {{model.get('last_name')}}</h3>
+        <em>click my face for more</em>
+    </center>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title" id="myModalLabel">More About
+                      {{model.get('first_name')}}</h4>
+                    </div>
+                <div class="modal-body">
+                    <center>
+                    <img src="" name="aboutme" width="140" height="140" border="0" class="img-circle"></a>
+                    <h3 class="media-heading">{{model.get('first_name')}} {{model.get('last_name')}} <small>{{model.get('country')}}</small></h3>
+                    <span><strong>Skills: </strong></span>
+                    <span class="label label-info" ng-repeat="skill in model.get('skill')">
+                      {{skill}}
+                    </span>
+                    </center>
+                    <hr>
+                    <center>
+                    <p class="text-left"><strong>Bio: </strong><br>
+                      {{model.get("bio")}}
+                    <br>
+                    </center>
+                </div>
+                <div class="modal-footer">
+                    <center>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">I've heard enough about Joe</button>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

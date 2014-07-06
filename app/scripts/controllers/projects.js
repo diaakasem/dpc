@@ -56,8 +56,8 @@
             page: 1,            // show first page
             count: 10,           // count per page
             sorting: {
-                    name: 'asc'     // initial sorting
-                }
+                name: 'asc'     // initial sorting
+            }
         }, {
             total: function () { return getData().length; },
             getData: function($defer, params) {
