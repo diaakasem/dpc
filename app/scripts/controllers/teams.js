@@ -16,16 +16,16 @@
             var query = new Parse.Query(Team);
             //query.equalTo("title", "I'm Hungry");
             query.find({
-              success:function(list) {
-                          scope.participants = list;
-                          scope.tableParams.reload();
-                      }
+                success:function(list) {
+                    scope.participants = list;
+                    scope.tableParams.reload();
+                }
             });
         };
 
         // Preloading
         scope.list();
-        
+
         scope.add = function(model) {
             var team = new Team();
             team.save(scope.model, {
@@ -56,8 +56,8 @@
             page: 1,            // show first page
             count: 10,           // count per page
             sorting: {
-                    name: 'asc'     // initial sorting
-                }
+                name: 'asc'     // initial sorting
+            }
         }, {
             total: function () { return getData().length; },
             getData: function($defer, params) {

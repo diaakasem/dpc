@@ -42,6 +42,10 @@ dpcModule.config(function ($routeProvider) {
         templateUrl: 'views/profile.html',
         controller: 'ProfileCtrl'
       })
+      .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

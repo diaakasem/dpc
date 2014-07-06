@@ -16,16 +16,16 @@
             var query = new Parse.Query(Project);
             //query.equalTo("title", "I'm Hungry");
             query.find({
-              success:function(list) {
-                          scope.participants = list;
-                          scope.tableParams.reload();
-                      }
+                success:function(list) {
+                    scope.participants = list;
+                    scope.tableParams.reload();
+                }
             });
         };
 
         // Preloading
         scope.list();
-        
+
         scope.add = function(model) {
             var project = new Project();
             project.save(scope.model, {
