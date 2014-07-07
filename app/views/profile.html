@@ -1,45 +1,67 @@
-<div class="container">
-    <div class="span3 well">
-        <center>
-          <a href="#aboutModal" data-toggle="modal" data-target="#myModal">
-            <img src="" name="aboutme" width="140" height="140" class="img-circle">
-          </a>
-        <h3>{{user.get('display_name')}}</h3>
-        <em>click my face for more</em>
-    </center>
-    </div>
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                    <h4 class="modal-title" id="myModalLabel">More About
-                      {{model.get('first_name')}}</h4>
-                    </div>
-                <div class="modal-body">
-                    <center>
-                    <img src="" name="aboutme" width="140" height="140" border="0" class="img-circle"></a>
-                    <h3 class="media-heading">{{model.get('first_name')}} {{model.get('last_name')}} <small>{{model.get('country')}}</small></h3>
-                    <span><strong>Skills: </strong></span>
-                    <span class="label label-info" ng-repeat="skill in model.get('skill')">
-                      {{skill}}
-                    </span>
-                    </center>
-                    <hr>
-                    <center>
-                    <p class="text-left"><strong>Bio: </strong><br>
-                      {{model.get("bio")}}
-                    <br>
-                    </center>
-                </div>
-                <div class="modal-footer">
-                    <center>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">I've heard enough about Joe</button>
-                    </center>
-                </div>
-            </div>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
+    <form role="form" name="registerform" id="registerform" ng-submit="update(model)">
+      <h2>{{model.display_name}}</h2>
+      <h2><small>{{model.bio}}</small></h2>
+      <hr class="colorgraph">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6">
+          <div class="form-group">
+            <input type="text" name="first_name" id="first_name"
+            class="form-control input-lg" placeholder="First Name" tabindex="1"
+            ng-model="model.first_name">
+          </div>
         </div>
-    </div>
+        <div class="col-xs-12 col-sm-6 col-md-6">
+          <div class="form-group">
+            <input type="text" name="last_name" id="last_name"
+            class="form-control input-lg" placeholder="Last Name" tabindex="2"
+            ng-model="model.last_name">
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="text" name="display_name" id="display_name"
+        class="form-control input-lg" placeholder="Display Name" tabindex="3"
+        ng-model="model.display_name">
+      </div>
+
+      <div class="form-group">
+        <input type="country" name="country" id="country" class="form-control
+        input-lg" placeholder="Name of your country" tabindex="5"
+        ng-model="model.country">
+      </div>
+      <div class="form-group">
+        <textarea name="skills" id="skills" class="form-control input-lg"
+          placeholder="Comma separated names of the skills you excel at." tabindex="6"
+          ng-model="model.skillsText"></textarea>
+      </div>
+      <div class="form-group">
+        <textarea name="bio" id="bio" class="form-control input-lg"
+          placeholder="Short bio about yourself" tabindex="7"
+          ng-model="model.bio"></textarea>
+      </div>
+
+      <div class="form-group">
+        Team:
+        <select ng-options="team as team.get('name') for team in teams"
+          ng-model="model.team" ></select>
+      </div>
+
+      <div class="form-group">
+        Project:
+        <select ng-options="project as project.get('name') for project in projects"
+          ng-model="model.project">
+        </select>
+      </div>
+
+      <hr class="colorgraph">
+      <div class="row">
+        <div class="col-xs-12 col-md-6 col-md-offset-6">
+          <input type="submit" class="btn btn-primary btn-block btn-lg"
+          tabindex="8" value="Cool, Update."></div>
+      </div>
+    </form>
+  </div>
 </div>
 

@@ -40,11 +40,11 @@
         scope.remove = function(model) {
             model.destroy({
                 success: function(person) {
-                             alert("Removed");
-                             scope.list();
-                         },
+                    alert("Removed");
+                    scope.list();
+                },
                 error: function(person, error) {
-                       }
+                }
             });
         };
 
