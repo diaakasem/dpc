@@ -30,17 +30,16 @@
             var project = new Project();
             project.save(scope.model, {
                 success: function(person) {
-                             scope.list();
-                         },
+                    scope.list();
+                },
                 error: function(person, error) {
-                       }
+                }
             });
         };
 
         scope.remove = function(model) {
             model.destroy({
                 success: function(person) {
-                    alert("Removed");
                     scope.list();
                 },
                 error: function(person, error) {

@@ -8,7 +8,7 @@
             participants: []
         };
 
-        scope.participants = [];
+        scope.teams = [];
 
         var Team = Parse.Object.extend("team");
 
@@ -17,7 +17,7 @@
             //query.equalTo("title", "I'm Hungry");
             query.find({
                 success:function(list) {
-                    scope.participants = list;
+                    scope.teams = list;
                     scope.tableParams.reload();
                 }
             });
@@ -30,10 +30,10 @@
             var team = new Team();
             team.save(scope.model, {
                 success: function(person) {
-                             scope.list();
-                         },
+                    scope.list();
+                },
                 error: function(person, error) {
-                       }
+                }
             });
         };
 
@@ -49,7 +49,7 @@
         };
 
         function getData() {
-            return scope.participants;
+            return scope.teams;
         }
 
         scope.tableParams = new ngTableParams({
