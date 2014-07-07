@@ -8,13 +8,11 @@
         var Profile = Parse.Object.extend("person");
         var objectId = localStorage.getItem("objectId");
 
-        debugger; 
         scope.load = function() {
-            var query = new Parse.Query(Profile);
-            //query.equalTo("title", "I'm Hungry");
-            query.get(objectId, {
-                success:function(person) {
-                    scope.model = person;
+            scope.model = scope.user.get('profile');
+            scope.model.fetch({
+                success: function(model) {
+                    scope.model = model;
                 }
             });
         };
