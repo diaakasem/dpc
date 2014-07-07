@@ -27,12 +27,11 @@
                     scope.user.set("profile", person);
                     scope.user.save(null, {
                         success: function(user) {
-                            alert("Done");
+                            location.path("login");
                         },
                         error: function(user, error) {
                         }
                     });
-                    location.path("login");
                 },
                 error: function(person, error) {
                 }

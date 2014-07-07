@@ -8,6 +8,7 @@
         var Profile = Parse.Object.extend("person");
         var objectId = localStorage.getItem("objectId");
 
+        debugger; 
         scope.load = function() {
             var query = new Parse.Query(Profile);
             //query.equalTo("title", "I'm Hungry");
