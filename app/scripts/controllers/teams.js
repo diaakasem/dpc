@@ -2,6 +2,10 @@
 (function() {
 
     function controller(scope, filter, ngTableParams) {
+        scope.teamsGraph  = {
+            name: "Teams",
+            children: []
+        };
 
         scope.model = {
             name:"",
@@ -10,7 +14,39 @@
 
         scope.teams = [];
 
+        var Person = Parse.Object.extend("person");
         var Team = Parse.Object.extend("team");
+
+        scope.load = function() {
+            var query = new Parse.Query(Person);
+            query.include(["team"]);
+            query.find({
+                success:function(list) {
+                    var structuredData = _.map(list, function(member) {
+                        return {
+                            name: member.get("display_name"),
+                            data: member,
+                            team_name: member.get("team").get("name"),
+                            team: member.get("team")
+                        };
+                    });
+                    var teams = _(structuredData).groupBy('team_name').map(function(value, key) {
+                        return {
+                            name: key,
+                            children: value
+                        }
+                    }).value();
+                    scope.teamsGraph  = {
+                        name: "Teams",
+                        children: teams
+                    };
+                    scope.$apply();
+                }
+                , error: function(data, error) {
+                    console.log(error);
+                }
+            });
+        };
 
         scope.list = function() {
             var query = new Parse.Query(Team);
@@ -25,6 +61,7 @@
 
         // Preloading
         scope.list();
+        scope.load();
 
         scope.add = function(model) {
             var team = new Team();
@@ -40,11 +77,11 @@
         scope.remove = function(model) {
             model.destroy({
                 success: function(person) {
-                             alert("Removed");
-                             scope.list();
-                         },
+                    alert("Removed");
+                    scope.list();
+                },
                 error: function(person, error) {
-                       }
+                }
             });
         };
 

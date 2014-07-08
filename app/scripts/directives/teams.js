@@ -4,7 +4,8 @@
 
     function controller(scope, element) {
 
-        var diameter = 960;
+        var diameter = element.parent().parent().width();
+        console.log(diameter);
 
         var tree = d3.layout.tree()
             .size([360, diameter / 2 - 120])
@@ -13,18 +14,19 @@
         var diagonal = d3.svg.diagonal.radial()
             .projection(function(d) { return [d.y, d.x / 180 * Math.PI]; });
 
-        scope.$watch('data', function() {
-            if (!scope.data) {
+        scope.$watch('graphData', function() {
+            if (!scope.graphData) {
                 return;
             }
+
             var svg = d3.select(element[0]).append("svg")
                     .attr("width", diameter)
                     .attr("height", diameter - 150)
                 .append("g")
                     .attr("transform", "translate(" + diameter / 2 + "," + diameter / 2 + ")");
 
-
-            var nodes = tree.nodes(scope.data),
+            console.log(scope.graphData);
+            var nodes = tree.nodes(scope.graphData),
                 links = tree.links(nodes);
 
             var link = svg.selectAll(".link")
@@ -37,7 +39,7 @@
                 .data(nodes)
                 .enter().append("g")
                 .attr("class", "node")
-                .attr("transform", function(d) { return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")"; })
+                .attr("transform", function(d) { return "rotate(" + ((d.x || 0) - 90) + ")translate(" + d.y + ")"; })
 
             node.append("circle")
                 .attr("r", 4.5);
@@ -59,7 +61,7 @@
             template: '<div></div>',
             restrict: 'E',
             scope: {
-                data: '&'
+                graphData: '='
             },
             replace: true,
             controller: ['$scope', '$element', controller]
