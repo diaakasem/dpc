@@ -10,7 +10,47 @@
 
         scope.participants = [];
 
+        var Person = Parse.Object.extend("person");
         var Project = Parse.Object.extend("project");
+
+        scope.load = function() {
+            var query = new Parse.Query(Person);
+            query.include(["project"]);
+            query.find({
+                success:function(list) {
+                    var structuredData = _.map(list, function(member) {
+                        var project = member.get("project"),
+                            projectName;
+                        if (project) {
+                            projectName = project.get("name");
+                        } else {
+                            projectName = "Unknown Project";
+                        }
+                        return {
+                            name: member.get("display_name"),
+                            data: member,
+                            project_name: projectName,
+                            project: member.get("project"),
+                            size: 1
+                        };
+                    });
+                    var projects = _(structuredData).groupBy('project_name').map(function(value, key) {
+                        return {
+                            name: key,
+                            children: value
+                        }
+                    }).value();
+                    scope.projectsGraph  = {
+                        name: "Projects",
+                        children: projects
+                    };
+                    scope.$apply();
+                }
+                , error: function(data, error) {
+                    console.log(error);
+                }
+            });
+        };
 
         scope.list = function() {
             var query = new Parse.Query(Project);
@@ -25,6 +65,7 @@
 
         // Preloading
         scope.list();
+        scope.load();
 
         scope.add = function(model) {
             var project = new Project();

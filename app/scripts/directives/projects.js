@@ -4,7 +4,7 @@
 
     function controller(scope, element) {
 
-        var diameter = 960;
+        var diameter = element.parent().parent().width();
 
         var tree = d3.layout.tree()
             .size([360, diameter / 2 - 120])
@@ -14,19 +14,19 @@
             .projection(function(d) { return [d.y, d.x / 180 * Math.PI]; });
 
 
-        scope.$watch('data', function() {
-            if (!scope.data) {
+        scope.$watch('graphData', function() {
+            if (!scope.graphData) {
                 return;
             }
 
-            var svg = d3.select(element).append("svg")
+            var svg = d3.select(element[0]).append("svg")
                     .attr("width", diameter)
                     .attr("height", diameter - 150)
                 .append("g")
                     .attr("transform", "translate(" + diameter / 2 + "," + diameter / 2 + ")");
 
 
-            var nodes = tree.nodes(scope.data),
+            var nodes = tree.nodes(scope.graphData),
                 links = tree.links(nodes);
 
             var link = svg.selectAll(".link")
@@ -61,7 +61,7 @@
             template: '<div></div>',
             restrict: 'E',
             scope: {
-                data: '&'
+                graphData: '='
             },
             replace: true,
             controller: ['$scope', '$element', controller]
