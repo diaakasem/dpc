@@ -23,11 +23,19 @@
             query.find({
                 success:function(list) {
                     var structuredData = _.map(list, function(member) {
+                        var team = member.get("team"),
+                            teamName;
+                        if (team) {
+                            teamName = team.get("name");
+                        } else {
+                            teamName = "Unknown Team";
+                        }
                         return {
                             name: member.get("display_name"),
                             data: member,
-                            team_name: member.get("team").get("name"),
-                            team: member.get("team")
+                            team_name: teamName,
+                            team: member.get("team"),
+                            size: 1
                         };
                     });
                     var teams = _(structuredData).groupBy('team_name').map(function(value, key) {

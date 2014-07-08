@@ -11,21 +11,21 @@
             .size([360, diameter / 2 - 120])
             .separation(function(a, b) { return (a.parent == b.parent ? 1 : 2) / a.depth; });
 
-        var diagonal = d3.svg.diagonal.radial()
-            .projection(function(d) { return [d.y, d.x / 180 * Math.PI]; });
-
         scope.$watch('graphData', function() {
             if (!scope.graphData) {
                 return;
             }
 
+            $(element).find('svg').remove();
             var svg = d3.select(element[0]).append("svg")
                     .attr("width", diameter)
                     .attr("height", diameter - 150)
                 .append("g")
                     .attr("transform", "translate(" + diameter / 2 + "," + diameter / 2 + ")");
 
-            console.log(scope.graphData);
+            var diagonal = d3.svg.diagonal.radial()
+                .projection(function(d) { return [d.y, d.x / 180 * Math.PI]; });
+
             var nodes = tree.nodes(scope.graphData),
                 links = tree.links(nodes);
 
