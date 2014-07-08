@@ -9,6 +9,8 @@
         var Person = Parse.Object.extend("person");
         var person = new Person();
         var User = new Parse.User();
+        var Team = Parse.Object.extend("team");
+        var Project = Parse.Object.extend("project");
 
         function saveProfile(user) {
             if (scope.model.skillsText && scope.model.skillsText.length) {
@@ -38,6 +40,27 @@
             });
 
         }
+
+        scope.load = function() {
+            var teamQuery = new Parse.Query(Team);
+            var projectQuery = new Parse.Query(Project);
+            teamQuery.find({
+                success:function(list) {
+                    scope.$apply(function() {
+                        scope.teams = list;
+                    });
+                }
+            });
+            projectQuery.find({
+                success:function(list) {
+                    scope.$apply(function() {
+                        scope.projects = list;
+                    });
+                }
+            });
+        };
+        // Preloading
+        scope.load();
 
         scope.register = function(model) {
 

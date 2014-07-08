@@ -4,5 +4,7 @@
     <img src="images/dpc_small.png" alt="Digital Participation Camp & Summit logo"><br>
     An easy way to connect
   </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#/register">Cool, Lets Participate!<span class="glyphicon glyphicon-ok"></span></a></p>
+  <p ng-if="!user">
+  <a class="btn btn-lg btn-success" ng-href="#/register">Cool, Lets Participate!<span class="glyphicon glyphicon-ok"></span></a>
+  </p>
 </div>
