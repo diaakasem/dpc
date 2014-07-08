@@ -22,7 +22,7 @@
             $(element).find('svg').remove();
             var svg = d3.select(element[0]).append("svg")
                     .attr("width", diameter)
-                    .attr("height", diameter - 150)
+                    .attr("height", diameter)
                 .append("g")
                     .attr("transform", "translate(" + diameter / 2 + "," + diameter / 2 + ")");
 
