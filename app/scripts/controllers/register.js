@@ -30,6 +30,7 @@
                     scope.user.save(null, {
                         success: function(user) {
                             location.path("login");
+                            scope.$apply();
                         },
                         error: function(user, error) {
                         }
